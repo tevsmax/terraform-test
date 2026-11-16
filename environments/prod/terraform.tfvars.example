@@ -1,0 +1,15 @@
+# Copy to terraform.tfvars (gitignored) and adjust.
+project     = "tfpractice"
+environment = "prod"
+location    = "eastus"
+
+address_space = ["10.20.0.0/16"]
+
+subnets = {
+  app  = ["10.20.1.0/24"]
+  data = ["10.20.2.0/24"]
+}
+
+extra_tags = {
+  owner = "<team-or-owner>"
+}
