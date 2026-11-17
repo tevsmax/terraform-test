@@ -18,6 +18,11 @@ variable "address_space" {
   type        = list(string)
 
   validation {
+    condition     = length(var.address_space) > 0
+    error_message = "address_space must contain at least one CIDR block."
+  }
+
+  validation {
     condition     = alltrue([for cidr in var.address_space : can(cidrhost(cidr, 0))])
     error_message = "Each entry in address_space must be a valid CIDR block."
   }
